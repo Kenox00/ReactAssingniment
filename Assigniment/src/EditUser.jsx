@@ -30,7 +30,7 @@ export default function EditUser() {
     const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
     storedUsers[parseInt(index, 10)] = user;
     localStorage.setItem('users', JSON.stringify(storedUsers));
-    navigate('/');
+    navigate('/listOfUsers');
   }
 
   if (!user) {
