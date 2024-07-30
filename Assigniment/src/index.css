@@ -64,6 +64,13 @@ main {
   border-radius: 8px;
 }
 
+.table-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
 .help-layout nav {
   display: flex;
   justify-content: center;
@@ -112,6 +119,11 @@ form input, form textarea {
 
 form label span {
   margin-bottom: 10px;
+}
+
+form select, form option {
+  color: var(--secondary);
+  background: white;
 }
 
 .careers > a {

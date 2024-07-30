@@ -1,3 +1,5 @@
+// File path: /mnt/data/ListOfUsers.jsx
+
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -7,7 +9,6 @@ export default function ListOfUsers() {
   const sessionKey = 'user_session_key';
 
   useEffect(() => {
-   
     if (!sessionStorage.getItem(sessionKey)) {
       navigate('/login');
     } else {
@@ -21,17 +22,27 @@ export default function ListOfUsers() {
     setUsers(updatedUsers);
     localStorage.setItem('users', JSON.stringify(updatedUsers)); 
   }
+
   function handleEdit(index) {
     navigate(`/edit/${index}`); 
   }
-  
+
   function handleAdd() {
     navigate('/register');
   }
 
+  function handleLogout() {
+    sessionStorage.removeItem(sessionKey);
+    localStorage.removeItem('users'); // Assuming you want to clear users data as well
+    navigate('/');
+  }
+
   return (
     <div className="container">
-      <h1>List of Users</h1>
+      <header>
+        <h1>List of Users</h1>
+        <button onClick={handleLogout}>Logout</button>
+      </header>
       <button onClick={handleAdd}>Add User</button>
       {users.length > 0 ? (
         <table className="users-table">
